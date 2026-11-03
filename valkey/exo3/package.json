@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --watch src/valkey.ts"
+  },
+  "dependencies": {
+    "@valkey/valkey-glide": "2.5.1",
+    "@types/node": "^24",
+    "mongodb": "7.6.0",
+    "postgres": "3.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.4",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2"
+  }
+}

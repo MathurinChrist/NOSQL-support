@@ -1,0 +1,29 @@
+services:
+  node-installer:
+    image: node:24-alpine
+    working_dir: /home/node/project
+    volumes:
+      - .:/home/node/project
+    command: npm i
+
+  app:
+    image: node:24-alpine
+    working_dir: /home/node/project
+    volumes:
+      - .:/home/node/project
+    command: npm run dev
+    depends_on:
+      valkey:
+        condition: service_started
+      node-installer:
+        condition: service_completed_successfully
+    environment:
+      VALKEY_HOST: valkey
+
+  valkey:
+    image: valkey/valkey:9.1.2-alpine
+    volumes:
+      - valkey_data:/data
+
+volumes:
+  valkey_data:
